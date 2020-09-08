@@ -1,6 +1,7 @@
 version: "3.8"
 volumes: 
   web-api-volume:
+  prometheus-volume:
   grafana-volume:    
 services:
   webservice:
@@ -15,6 +16,10 @@ services:
     image: prometheus
     ports:
         - 9090:9090
+    volumes:
+      - type: volume
+        source: prometheus-volume
+        target: /prometheus
   grafana:
     image: grafana/grafana
     ports:
