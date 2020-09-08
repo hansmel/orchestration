@@ -19,6 +19,7 @@ docker rmi $(docker images -a -q)
 ## Docker volume location on macOS is inside a container running on the mac
 ## 1. Log int into the container using:
 ## screen /Users/<username>/Library/Containers/com.docker.docker/Data/vms/0/tty
+## example: screen /Users/Grey/Library/Containers/com.docker.docker/Data/vms/0/tty
 ## 2. The contents of the volume is located in folder:
 ## /var/lib/docker/volumes/<volume-name>/_data
 
