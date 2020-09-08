@@ -1,0 +1,39 @@
+# Create network (bridge network)
+docker create network webservice-net
+
+# Build image
+docker build -r prom .
+
+# Remove containers
+docker rm container-name
+docker rm -f container-name
+docker rm $(docker ps -a -f status=exited -f status=created -q)
+docker rm $(docker ps -a -q)
+
+# Remove all images
+docker rmi $(docker images -a -q)
+
+
+## Docker volume location on Docker Desktop for Windows: C:\Users\Gray\AppData\Local\Docker\wsl\data\ext4.vhdx
+
+## Docker volume location on macOS is inside a container running on the mac
+## 1. Log int into the container using:
+## screen /Users/<username>/Library/Containers/com.docker.docker/Data/vms/0/tty
+## 2. The contents of the volume is located in folder:
+## /var/lib/docker/volumes/<volume-name>/_data
+
+## create volume
+docker volume create --driver local --label my-label=my-label-value web-api-volume
+
+## bind mount volume
+docker run -d --name webservice --mount type=bind,source=c:\tmp\web-api,target=/mnt/web-api -p 3000:3000 webservice
+
+## volume mount volume
+docker run -d --name webservice --mount type=volume,source=web-api-volume,target=/mnt/web-api -p 3000:3000 webservice
+# or (type=volume is default)
+docker run -d --name webservice --mount source=web-api-volume,target=/mnt/web-api -p 3000:3000 webservice
+
+# Run container
+docker run -d --network webservice-net -p 9090:9090 --name prometheus  prometheus
+docker run -d --network webservice-net -p 3001:3000 --name grafana --mount source=grafana-volume,target=/var/lib/grafana grafana/grafana
+docker run -d --network webservice-net -p 3000:3000 --name webservice --mount source=web-api-volume,target=/mnt/web-api webservice

@@ -1,0 +1,47 @@
+version: "3.7"
+volumes: 
+  web-api-volume:
+services:
+  webservice-1:
+    image: hanmel/webservice
+    ports: 
+      - 3000:3000
+    volumes:
+      - type: volume
+        source: web-api-volume
+        target: /mnt/web-api
+  webservice-2:
+    image: hanmel/webservice
+    ports: 
+      - 3001:3000
+    volumes:
+      - type: volume
+        source: web-api-volume
+        target: /mnt/web-api
+  webservice-3:
+    image: hanmel/webservice
+    ports: 
+      - 3002:3000
+    volumes:
+      - type: volume
+        source: web-api-volume
+        target: /mnt/web-api     
+  ubuntu_metricbeat-1:
+    image: ubuntu_metricbeat
+    environment:
+      SHIPPER_NAME: hm-shipper-name-1
+      SERVICE_NAME: service-1
+      SERVICE_TIER: web-tier
+  ubuntu_metricbeat-2:
+    image: ubuntu_metricbeat
+    environment:
+      SHIPPER_NAME: hm-shipper-name-2
+      SERVICE_NAME: service-2
+      SERVICE_TIER: web-tier
+  ubuntu_metricbeat-3:
+    image: ubuntu_metricbeat
+    environment:
+      SHIPPER_NAME: hm-shipper-name-3
+      SERVICE_NAME: service-3
+      SERVICE_TIER: web-tier
+
