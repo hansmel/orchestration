@@ -5,7 +5,7 @@ volumes:
   grafana-volume:    
 services:
   webservice:
-    image: webservice
+    image: hanmel/webservice
     ports: 
       - 3000:3000
     volumes:
@@ -13,7 +13,7 @@ services:
         source: web-api-volume
         target: /mnt/web-api
   prometheus:
-    image: prometheus
+    image: hanmel/prometheus
     ports:
         - 9090:9090
     volumes:
