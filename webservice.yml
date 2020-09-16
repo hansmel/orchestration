@@ -5,7 +5,7 @@ volumes:
   grafana-volume:    
 services:
   webservice:
-    image: hanmel/webservice:0.0.0
+    image: hanmel/webservice:0.1.1
     ports: 
       - 3000:3000
     volumes:
