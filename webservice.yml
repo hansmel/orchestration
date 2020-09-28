@@ -21,7 +21,7 @@ services:
         source: prometheus-volume
         target: /prometheus
   grafana:
-    image: hanmel/grafana:0.0.0
+    image: hanmel/grafana:0.0.1
     ports:
         - 3001:3000
     volumes:
