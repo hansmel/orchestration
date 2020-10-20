@@ -5,6 +5,9 @@ volumes:
   grafana-volume:    
 services:
   webservice:
+    build:
+      context: ../go-api/
+      dockerfile: Dockerfile
     image: hanmel/webservice:0.1.3
     deploy:
       replicas: 2
@@ -15,6 +18,9 @@ services:
         source: web-api-volume
         target: /mnt/web-api
   prometheus:
+    build:
+      context: ../monitoring/prometheus/
+      dockerfile: Dockerfile
     image: hanmel/prometheus:0.0.0
     ports:
         - 9090:9090
@@ -23,6 +29,9 @@ services:
         source: prometheus-volume
         target: /prometheus
   grafana:
+    build:
+      context: ../monitoring/grafana/
+      dockerfile: Dockerfile
     image: hanmel/grafana:0.0.1
     ports:
         - 3001:3000
