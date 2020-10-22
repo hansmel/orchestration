@@ -1,1 +1,1 @@
-docker-compose -f webservice.yml down
+docker-compose -f docker-compose.yml down
