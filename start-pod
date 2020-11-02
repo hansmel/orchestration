@@ -1,1 +1,1 @@
-kubectl apply -f webservice-pod.yaml
+kubectl apply -f webservice-pod.yml

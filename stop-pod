@@ -1,1 +1,1 @@
-kubectl delete -f webservice-pod.yaml 
+kubectl delete -f webservice-pod.yml 
