@@ -3,9 +3,16 @@ kind: Pod
 metadata:
   name: webservice
 spec:
+  volumes:
+    - name: "webservice-data"
+      hostPath:
+        path: "/Users/grey/dev/mnt/web-api"
   containers:
-    - image: docker.io/hanmel/webservice:latest
+    - image: docker.io/hanmel/webservice:0.1.4
       name: webservice
+      volumeMounts:
+        - mountPath: "/mnt/web-api"
+          name: "webservice-data"
       ports: 
         - containerPort: 3000
           name: http
