@@ -9,6 +9,10 @@ spec:
     - name: "webservice-data"
       hostPath:
         path: "/Users/grey/dev/mnt/web-api"
+    # - name: "nas-data" 
+    #   nfs:
+    #   server: 192.168.1.4 
+    #   path: "/volume1/dev"
   containers:
     - image: docker.io/hanmel/webservice:0.1.4
       name: webservice
