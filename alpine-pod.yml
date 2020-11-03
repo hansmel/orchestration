@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine
+  labels:
+    app: alpine
+spec:
+  # volumes:
+    # - name: "webservice-data"
+    #   hostPath:
+    #     path: "/Users/grey/dev/mnt/web-api"            
+    # - name: "nas-data" 
+    #   nfs:
+    #     server: 192.168.1.4 
+    #     path: "/volume1/dev/webservice"
+  containers:
+    - image: docker.io/alpine:3.12
+      name: alpine
+      # volumeMounts:
+      #   - mountPath: "/mnt/web-api"
+      #     name: "nas-data"
+
+
