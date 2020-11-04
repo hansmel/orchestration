@@ -14,7 +14,7 @@ spec:
         server: 192.168.1.4 
         path: "/volume1/dev/webservice"
   containers:
-    - image: docker.io/hanmel/webservice:0.1.4
+    - image: docker.io/hanmel/webservice:0.1.5
       name: webservice
       volumeMounts:
         - mountPath: "/mnt/web-api"
