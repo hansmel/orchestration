@@ -19,13 +19,17 @@ spec:
         image: docker.io/hanmel/prometheus:0.0.1
         volumeMounts:
           - mountPath: "/prometheus"
-            name: "nas-data-prom"
+            name: "prometheus-data"
         ports: 
         - containerPort: 9090
           name: http
-          protocol: TCP 
+          protocol: TCP
       volumes:
-      - name: "nas-data-prom" 
-        nfs:
-          server: 192.168.1.4 
-          path: "/volume1/dev/prometheus"
+      - name: "prometheus-data"
+        hostPath:
+          path: "/Users/grey/dev/mnt/prometheus"
+      # volumes:
+      # - name: "nas-data-prom" 
+      #   nfs:
+      #     server: 192.168.1.4 
+      #     path: "/volume1/dev/prometheus"
