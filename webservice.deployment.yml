@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webservice
+  labels:
+    app: webservice
+spec:
+  selector:
+    matchLabels:
+      app: webservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webservice
+    spec:
+      containers:
+      - name: webservice
+        image: docker.io/hanmel/webservice:0.1.5
+        ports: 
+        - containerPort: 3000
+          name: http
+          protocol: TCP 
