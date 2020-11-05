@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: docker.io/hanmel/prometheus:0.0.1
+        volumeMounts:
+          - mountPath: "/prometheus"
+            name: "nas-data-prom"
+        ports: 
+        - containerPort: 9090
+          name: http
+          protocol: TCP 
+      volumes:
+      - name: "nas-data-prom" 
+        nfs:
+          server: 192.168.1.4 
+          path: "/volume1/dev/prometheus"
