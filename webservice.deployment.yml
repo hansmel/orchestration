@@ -17,7 +17,15 @@ spec:
       containers:
       - name: webservice
         image: docker.io/hanmel/webservice:0.1.5
+        volumeMounts:
+          - mountPath: "/mnt/web-api"
+            name: "nas-data"
         ports: 
         - containerPort: 3000
           name: http
           protocol: TCP 
+      volumes:
+      - name: "nas-data" 
+        nfs:
+          server: 192.168.1.4 
+          path: "/volume1/dev/webservice"
