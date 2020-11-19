@@ -4,3 +4,7 @@ kubectl apply -f ./k8s
 
 Delete all objects in folder:
 kubectl delete -f ./k8s
+
+Exec into pod:
+exec -it webservice-587445c4d-w6xjb -- sh
+ 
