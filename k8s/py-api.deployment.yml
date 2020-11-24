@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: py-api
-        image: docker.io/hanmel/py-api:0.0.0 # Hello
+        image: docker.io/hanmel/py-api:0.0.0
+        #image: docker.io/hanmel/py-api:0.0.0 # Hello from application
         #image: docker.io/hanmel/py-api:0.0.1 # Goodbye from application
         ports: 
         - containerPort: 5000
