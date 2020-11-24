@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-api
+  labels:
+    app: py-api
+spec:
+  selector:
+    matchLabels:
+      app: py-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: py-api
+    spec:
+      containers:
+      - name: py-api
+        image: docker.io/hanmel/py-api:0.0.0 # Hello
+        #image: docker.io/hanmel/py-api:0.0.1 # Goodbye from application
+        ports: 
+        - containerPort: 5000
+          name: http
+          protocol: TCP
